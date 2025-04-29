@@ -1,1 +1,291 @@
+/* Include box-sizing for all elements */
+*, *::before, *::after {
+  box-sizing: border-box;
+  /* Add base transition styles */
+  transition-property: all;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out; /* Optional: Add a timing function */
+}
+
+/* Define CSS Custom Properties (Variables) */
+:root {
+    /* Colors */
+    --color-background: #f8f8f8;
+    --color-container-background: #ffffff;
+    --color-text-body: #333;
+    --color-text-heading: #2c3e50;
+    --color-text-subheading: #555;
+    --color-text-emphasis: #34495e;
+    --color-border-primary: #3498db; /* Blue underline for main title */
+    --color-border-secondary: #bdc3c7; /* Light grey underline for sections */
+    --color-text-light: #a0aec0; /* For draft date */
+    --color-focus-outline: #007bff; /* Blue outline for focus */
+
+
+    /* Spacing */
+    --space-xs: 0.5rem;
+    --space-sm: 0.75rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-xxl: 2.5rem;
+
+    /* Border Radius */
+    --border-radius-md: 0.5rem;
+    --border-radius-lg: 0.75rem;
+
+    /* Box Shadow */
+    --box-shadow-soft: 0 10px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* Add smooth scrolling behavior by default */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto; /* Disable smooth scrolling */
+  }
+  /* Also disable transitions for reduced motion */
+  *, *::before, *::after {
+    transition: none !important;
+  }
+}
+
+/* Style for keyboard focus states */
+:focus-visible {
+  outline: 3px dashed var(--color-focus-outline); /* Use a dashed outline with a custom color */
+  outline-offset: 3px; /* Add some space between the outline and the element */
+}
+
+
+/* Global styles */
+body {
+    font-family: 'Inter', sans-serif; /* Body text font */
+    background-color: var(--color-background);
+    line-height: 1.7; /* Improved line spacing for readability */
+    color: var(--color-text-body);
+    padding: var(--space-lg); /* Add some padding around the body */
+}
+
+/* Container for content */
+.container {
+    max-width: 960px; /* Max width for content */
+    margin: 0 auto; /* Center the container */
+    background-color: var(--color-container-background);
+    border-radius: var(--border-radius-lg); /* Slightly more rounded corners */
+    padding: var(--space-xl); /* More padding inside the container */
+    box-shadow: var(--box-shadow-soft); /* Softer, more spread out shadow */
+}
+
+/* Heading styles */
+h1, h2, h3 {
+    font-family: 'Merriweather', serif; /* Heading font */
+    color: var(--color-text-heading);
+    font-weight: 700; /* Bold headings */
+    /* Base margin-bottom handled by utility classes */
+}
+
+h1 {
+    font-size: var(--space-xxl); /* Larger size for main title */
+    text-align: center; /* Center the main title */
+    border-bottom: 3px solid var(--color-border-primary); /* Subtle blue underline */
+    padding-bottom: var(--space-md);
+    letter-spacing: 0.03em; /* Added letter spacing */
+    /* margin-bottom handled by utility class */
+}
+
+h2 {
+    font-size: var(--space-xl); /* Size for section titles */
+    border-bottom: 1px solid var(--color-border-secondary); /* Very light grey underline */
+    padding-bottom: var(--space-xs);
+    letter-spacing: 0.02em; /* Added letter spacing */
+    /* margin-top and margin-bottom handled by utility classes */
+}
+
+h3 {
+    font-size: var(--space-lg); /* Size for sub-section titles */
+    /* margin-top and margin-bottom handled by utility classes */
+    color: var(--color-text-subheading);
+    letter-spacing: 0.02em; /* Added letter spacing */
+}
+
+p {
+    /* margin-bottom handled by utility class */
+    max-width: 75ch; /* Limit paragraph width for readability */
+    margin-left: auto; /* Center the paragraph */
+    margin-right: auto; /* Center the paragraph */
+}
+
+address {
+    font-style: normal; /* Keep address text normal, not italic */
+    margin-left: var(--space-lg); /* Indent address */
+    /* margin-bottom handled by utility class */
+    color: var(--color-text-subheading);
+    max-width: 75ch; /* Limit address width */
+    /* Note: Centering address might not be desired due to indentation,
+             so we keep the margin-left and don't auto center it. */
+}
+
+ul {
+    list-style: disc;
+    margin-left: var(--space-xl); /* Indent lists */
+    /* margin-bottom handled by utility class */
+}
+
+li {
+    /* margin-bottom handled by utility class */
+}
+
+/* Style for strong text, like definition terms */
+strong {
+    color: var(--color-text-emphasis);
+    font-weight: 700;
+}
+
+/* Style for the draft date paragraph (using Tailwind class text-gray-500) */
+.text-gray-500 {
+    color: var(--color-text-light);
+}
+
+/* --- Utility Classes --- */
+
+/* Margin Bottom */
+.u-mb-xs { margin-bottom: var(--space-xs); }
+.u-mb-sm { margin-bottom: var(--space-sm); }
+.u-mb-md { margin-bottom: var(--space-md); }
+.u-mb-lg { margin-bottom: var(--space-lg); }
+.u-mb-xl { margin-bottom: var(--space-xl); }
+.u-mb-xxl { margin-bottom: var(--space-xxl); }
+
+/* Margin Top */
+.u-mt-xs { margin-top: var(--space-xs); }
+.u-mt-sm { margin-top: var(--space-sm); }
+.u-mt-md { margin-top: var(--space-md); }
+.u-mt-lg { margin-top: var(--space-lg); }
+.u-mt-xl { margin-top: var(--space-xl); }
+.u-mt-xxl { margin-top: var(--space-xxl); }
+
+/* Padding */
+.u-p-xs { padding: var(--space-xs); }
+.u-p-sm { padding: var(--space-sm); }
+.u-p-md { padding: var(--space-md); }
+.u-p-lg { padding: var(--space-lg); }
+.u-p-xl { padding: var(--space-xl); }
+.u-p-xxl { padding: var(--space-xxl); }
+
+/* Padding Bottom */
+.u-pb-xs { padding-bottom: var(--space-xs); }
+.u-pb-sm { padding-bottom: var(--space-sm); }
+.u-pb-md { padding-bottom: var(--space-md); }
+.u-pb-lg { padding-bottom: var(--space-lg); }
+.u-pb-xl { padding-bottom: var(--space-xl); }
+.u-pb-xxl { padding-bottom: var(--space-xxl); }
+
+/* Border Bottom Color */
+.u-border-bottom-primary { border-bottom-color: var(--color-border-primary); }
+.u-border-bottom-secondary { border-bottom-color: var(--color-border-secondary); }
+
+/* Visually hidden utility class for screen readers */
+.u-visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+
+/* --- Mobile Responsiveness --- */
+
+/* Styles for screens smaller than 768px (typical tablet breakpoint) */
+@media (max-width: 768px) {
+    body {
+        padding: var(--space-md); /* Reduce body padding on smaller screens */
+    }
+
+    .container {
+        padding: var(--space-lg); /* Reduce container padding */
+        border-radius: var(--border-radius-md); /* Slightly smaller border radius */
+    }
+
+    h1 {
+        font-size: var(--space-xl); /* Reduce main title size */
+        /* margin-bottom handled by utility class */
+        letter-spacing: 0.02em; /* Adjust letter spacing for smaller screens */
+    }
+
+    h2 {
+        font-size: var(--space-lg); /* Reduce section title size */
+        /* margin-top and margin-bottom handled by utility classes */
+        letter-spacing: 0.01em; /* Adjust letter spacing for smaller screens */
+    }
+
+    h3 {
+        font-size: var(--space-md); /* Reduce sub-section title size */
+        /* margin-top and margin-bottom handled by utility classes */
+        letter-spacing: 0.01em; /* Adjust letter spacing for smaller screens */
+    }
+
+    ul {
+        margin-left: var(--space-lg); /* Reduce list indentation */
+    }
+
+    li {
+        /* margin-bottom handled by utility class */
+    }
+
+    p, address {
+        max-width: 100%; /* Allow paragraphs and addresses to take full width on smaller screens */
+        margin-left: auto; /* Ensure centering is maintained if needed */
+        margin-right: auto;
+    }
+}
+
+/* Styles for even smaller screens (typical mobile breakpoint) */
+@media (max-width: 480px) {
+    body {
+        padding: var(--space-sm); /* Further reduce body padding */
+    }
+
+     .container {
+        padding: var(--space-md); /* Further reduce container padding */
+        box-shadow: none; /* Remove shadow on very small screens */
+     }
+
+    h1 {
+        font-size: var(--space-lg); /* Further reduce main title size */
+        /* margin-bottom handled by utility class */
+        letter-spacing: normal; /* Reset or further adjust letter spacing */
+    }
+
+    h2 {
+        font-size: var(--space-md); /* Further reduce section title size */
+        /* margin-top and margin-bottom handled by utility classes */
+        letter-spacing: normal; /* Reset or further adjust letter spacing */
+    }
+
+    h3 {
+        font-size: var(--space-sm); /* Further reduce sub-section title size */
+        /* margin-top and margin-bottom handled by utility classes */
+        letter-spacing: normal; /* Reset or further adjust letter spacing */
+    }
+
+    ul {
+        margin-left: var(--space-md); /* Further reduce list indentation */
+    }
+
+    li {
+        /* margin-bottom handled by utility class */
+    }
+
+    p, address {
+        max-width: 100%; /* Ensure full width on smallest screens */
+    }
+}
 
